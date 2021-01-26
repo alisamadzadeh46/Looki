@@ -1,0 +1,17 @@
+.static-media-section, .common-banner, .product-tab-nav, .offcanvas-cart, .offcanvas-wishlist,.offcanvas-mobile-menu,
+header, .breadcrumb-section, .login-register-area, .service-section, .whish-list-section, .check-out-section, .compare-section,
+.my-account,.product-single,.product-tab,.contact-section,.blog-section,.product-list,.single-blog {
+  direction: rtl;
+}
+#add-to-cart{
+  direction: rtl;
+}
+.count{
+  direction: ltr;
+}
+footer input[type="text"] {
+  text-align: left;
+}
+.dir-ltr{
+  direction: ltr;
+}
