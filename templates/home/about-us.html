@@ -1,0 +1,173 @@
+{% extends 'home/base.html' %}
+{% load humanizelib %}
+{% load static %}
+{% block title %} درباره ما {% endblock %}
+{% block main %}
+    <nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 class="title pb-4 text-dark text-capitalize">درباره ما</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">درباره ما</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- breadcrumb-section end -->
+    <!-- product tab start -->
+    <section class="about-section pt-80 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-xl-11 mx-auto mb-30">
+                    <div class="about-content text-center dir-rtl">
+                        <div class="about-left-image mb-30">
+                            <img src="{% static 'home/assets/img/blog-post/5.jpg' %}" alt="img" class="img-responsive"/>
+                        </div>
+                        <div>
+                            <h2 class="title mb-30">
+                                ما یک آژانس دیجیتال هستیم که در ارائه محتوا و تجارب مفید برنامه متمرکز هستیم.
+                            </h2>
+                            <p class="mb-30">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
+                                فعلی تکنولوژی مورد نیاز، و کاربردهای
+                                متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+                                آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
+                                طراحان رایانه ای علی الخصوص طراحان
+                                خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
+                                دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل
+                                حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
+                                پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                            </p>
+                            <img src="{% static 'home/assets/img/blog-post/signature.png' %}" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product tab end -->
+
+    <section class="static-media-section theme-bg py-45">
+        <div class="container">
+            <div class="static-media-wrap theme-bg">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 py-3">
+                        <div class="d-flex static-media2 flex-column flex-sm-row">
+                            <img class="align-self-center mb-2 mb-sm-0 mr-auto ml-sm-3"
+                                 src="{% static 'home/assets/img/icon/2.png' %}" alt="icon"/>
+                            <div class="media-body">
+                                <h4 class="title">تحویل رایگان</h4>
+                                <p class="text">تحویل کاملا رایکان خرید</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 py-3">
+                        <div class="d-flex static-media2 flex-column flex-sm-row">
+                            <img class="align-self-center mb-2 mb-sm-0 mr-auto ml-sm-3"
+                                 src="{% static 'home/assets/img/icon/3.png' %}" alt="icon"/>
+                            <div class="media-body">
+                                <h4 class="title">ضمانت بازگشت</h4>
+                                <p class="text">ضمانت بازگشت ۷ روزه کالا</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 py-3">
+                        <div class="d-flex static-media2 flex-column flex-sm-row">
+                            <img class="align-self-center mb-2 mb-sm-0 mr-auto ml-sm-3"
+                                 src="{% static 'home/assets/img/icon/4.png' %}" alt="icon"/>
+                            <div class="media-body">
+                                <h4 class="title">۱۰۰ ٪ پرداخت ایمن</h4>
+                                <p class="text">پرداخت کاملا مطمئن</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 py-3">
+                        <div class="d-flex static-media2 flex-column flex-sm-row">
+                            <img class="align-self-center mb-2 mb-sm-0 mr-auto ml-sm-3"
+                                 src="{% static 'home/assets/img/icon/5.png' %}" alt="icon"/>
+                            <div class="media-body">
+                                <h4 class="title">پشتیبانی ۲۴</h4>
+                                <p class="text">پشتیبانی ۲۴ ساعته هر روز هفته</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section pt-80 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="single-blog">
+                        <div class="single-thumb mb-25 zoom-in d-block overflow-hidden">
+                            <img src="{% static 'home/assets/img/service/1.jpg' %}" alt="single-thumb-naile"/>
+                        </div>
+                        <div class="single-service">
+                            <h3 class="title text-capitalize mb-20">ما چکار میکنیم؟</h3>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                تکنولوژی مورد نیاز و کاربردهای
+                                متنوع با هدف بهبود ابزارهای کاربردی می باشد
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="single-blog">
+                        <div class="single-thumb mb-20 zoom-in d-block overflow-hidden">
+                            <img src="{% static 'home/assets/img/service/2.jpg' %}" alt="single-thumb-naile"/>
+                        </div>
+                        <div class="single-service">
+                            <h3 class="title text-capitalize mb-20">ماموریت ما</h3>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                تکنولوژی مورد نیاز و کاربردهای
+                                متنوع با هدف بهبود ابزارهای کاربردی می باشد
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="single-blog">
+                        <div class="single-thumb mb-20 zoom-in d-block overflow-hidden">
+                            <img src="{% static 'home/assets/img/service/3.jpg' %}" alt="single-thumb-naile"/>
+                        </div>
+                        <div class="single-service">
+                            <h3 class="title text-capitalize mb-20">درباره ما</h3>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                                است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                تکنولوژی مورد نیاز و کاربردهای
+                                متنوع با هدف بهبود ابزارهای کاربردی می باشد
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="overlay">
+        <div class="scale"></div>
+        <form class="search-box" action="#">
+            <input type="text" name="search" placeholder="جستجو products..."/>
+            <button id="close" type="submit">
+                <i class="ion-ios-search-strong"></i>
+            </button>
+        </form>
+        <button class="close"><i class="ion-android-close"></i></button>
+    </div>
+
+{% endblock %}

@@ -23,4 +23,7 @@ urlpatterns = [
     path('', include('home.urls', namespace='home')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('product/', include('product.urls', namespace='product')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('account/', include('account.urls', namespace='account')),
+    path('blog/', include('blog.urls', namespace='blog')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

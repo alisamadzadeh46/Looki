@@ -1,0 +1,259 @@
+{% extends 'home/base.html' %}
+{% load humanizelib %}
+{% load static %}
+{% block title %} سبد خرید{% endblock %}
+{% block main %}
+    <nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 class="title pb-4 text-dark text-capitalize">سبد خرید</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">سبد خرید</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- breadcrumb-section end -->
+    <!-- product tab start -->
+    <section class="whish-list-section theme1 pt-80 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="title mb-30 pb-25 text-capitalize">آیتم های سبد خرید شما</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th class="text-center" scope="col">تصویر محصول</th>
+                                <th class="text-center" scope="col">نام محصول</th>
+                                <th class="text-center" scope="col">موجودی</th>
+                                <th class="text-center" scope="col">تعداد</th>
+                                <th class="text-center" scope="col">قیمت</th>
+                                <th class="text-center" scope="col">عملیات</th>
+                                <th class="text-center" scope="col">پرداخت</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th class="text-center" scope="row">
+                                    <img src="{% static 'home/assets/img/product/2.png' %}" alt="img"/>
+                                </th>
+                                <td class="text-center">
+                                    <span class="whish-title">کرم مقاوم در برابر آب و باد</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge badge-danger position-static">موجود</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="product-count style">
+                                        <div class="count d-flex justify-content-center">
+                                            <input type="number" min="1" max="10" step="1" value="1"/>
+                                            <div class="button-group">
+                                                <button class="count-btn increment">
+                                                    <i class="fas fa-chevron-up"></i>
+                                                </button>
+                                                <button class="count-btn decrement">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="whish-list-price"> ۳۲.۰۰۰ تومان </span>
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="#">
+                                        <span class="trash"><i class="fas fa-trash-alt"></i> </span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-dark btn--lg">افزودن به سبد</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="text-center" scope="row">
+                                    <img src="{% static 'home/assets/img/product/4.png' %}" alt="img"/>
+                                </th>
+                                <td class="text-center">
+                                    <span class="whish-title">لاک ناخن اورجینال کاوال</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge badge-danger position-static">موجود</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="product-count style">
+                                        <div class="count d-flex justify-content-center">
+                                            <input type="number" min="1" max="10" step="1" value="1"/>
+                                            <div class="button-group">
+                                                <button class="count-btn increment">
+                                                    <i class="fas fa-chevron-up"></i>
+                                                </button>
+                                                <button class="count-btn decrement">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="whish-list-price"> ۳۲.۰۰۰ تومان </span>
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="#">
+                                        <span class="trash"><i class="fas fa-trash-alt"></i> </span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-dark btn--lg">افزودن به سبد</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="text-center" scope="row">
+                                    <img src="{% static 'home/assets/img/product/6.png' %}" alt="img"/>
+                                </th>
+                                <td class="text-center">
+                                    <span class="whish-title">جعبه آرایش مدل جدید Arish</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge badge-danger position-static">موجود</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="product-count style">
+                                        <div class="count d-flex justify-content-center">
+                                            <input type="number" min="1" max="10" step="1" value="1"/>
+                                            <div class="button-group">
+                                                <button class="count-btn increment">
+                                                    <i class="fas fa-chevron-up"></i>
+                                                </button>
+                                                <button class="count-btn decrement">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="whish-list-price"> ۳۲.۰۰۰ تومان </span>
+                                </td>
+
+                                <td class="text-center">
+                                    <a href="#">
+                                        <span class="trash"><i class="fas fa-trash-alt"></i> </span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-dark btn--lg">افزودن به سبد</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product tab end -->
+    <div class="check-out-section pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="billing-info-wrap">
+                        <h3 class="title">محاسبه مسیر</h3>
+                        <form class="personal-information" action="assets/php/contact.php">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-select mb-20px">
+                                        <select id="inputState" class="form-select mb-3">
+                                            <option>لطفا کشور خود را انتخاب نمایید</option>
+                                            <option>آدربایجان</option>
+                                            <option>روسیه</option>
+                                            <option>بحیرن</option>
+                                            <option>بنکلادش</option>
+                                            <option>اردن</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-select mb-20px">
+                                        <select id="inputState2" class="form-select mb-3">
+                                            <option>لطفا استان خود را انتخاب نمایید</option>
+                                            <option>آدربایجان</option>
+                                            <option>روسیه</option>
+                                            <option>بحیرن</option>
+                                            <option>بنکلادش</option>
+                                            <option>اردن</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="billing-info mb-20px">
+                                        <input placeholder="کد پستی" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="billing-select mb-20px">
+                                        <a href="#" class="btn btn-primary check-out-btn">محاسبه</a>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h3 class="coupon-title">کد تخفیف</h3>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info mb-20px">
+                                        <input placeholder="کد تخفیف را وارد نمایید" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <a href="#" class="btn btn-primary check-out-btn">اعمال کد</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5 mt-4 mt-lg-0">
+                    <div class="your-order-area">
+                        <div class="your-order-wrap gray-bg-4">
+                            <div class="your-order-product-info">
+                                <div class="your-order-top">
+                                    <ul>
+                                        <li>محصول</li>
+                                        <li>۱.۳۲۰.۰۰۰ تومان</li>
+                                    </ul>
+                                </div>
+
+                                <div class="your-order-bottom">
+                                    <ul>
+                                        <li class="your-order-shipping">ارسال</li>
+                                        <li>ارسال رایگان</li>
+                                    </ul>
+                                </div>
+                                <div class="your-order-total mb-0">
+                                    <ul>
+                                        <li class="order-total">جمع</li>
+                                        <li>۱.۳۲۰.۰۰۰ تومان</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Place-order mt-25">
+                            <a class="btn btn--lg btn-primary mr-3" href="#">بروزرسانی سبد</a>
+                            <a class="btn btn--lg btn-primary my-2 my-sm-0" href="#">پرداخت</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

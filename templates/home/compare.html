@@ -1,0 +1,93 @@
+{% extends 'home/base.html' %}
+{% load humanizelib %}
+{% load static %}
+{% block title %}مقایسه  {% endblock %}
+{% block main %}
+    <nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 class="title pb-4 text-dark text-capitalize">مقایسه</h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="index.html">صفحه اصلی</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">مقایسه</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- breadcrumb-section end -->
+    <!-- product tab start -->
+    <section class="compare-section theme1 pt-80 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="title mb-30 pb-25 text-capitalize">مقایسه</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">اطلاعات محصول</th>
+                                <th scope="col" class="text-center">
+                                    <img src="{% static 'home/assets/img/product/1.png' %}" alt="img"/>
+                                    <span class="sub-title d-block">لاک ناخن اصل کاوال</span>
+                                    <a href="cart.html" class="btn btn-dark btn--lg"> افزودن به سبد</a>
+                                </th>
+                                <th scope="col" class="text-center">
+                                    <img src="{% static 'home/assets/img/product/2.png' %}" alt="img"/>
+                                    <span class="sub-title d-block">کرم مقاوم در برابر آب و باد</span>
+                                    <a href="cart.html" class="btn btn-dark btn--lg"> افزودن به سبد</a>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">قیمت</th>
+                                <td class="text-center">
+                                    <span class="whish-list-price"> ۳۲۰.۰۰۰ تومان </span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="whish-list-price"> ۳۲۰.۰۰۰ تومان </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">توضیحات</th>
+                                <td class="text-center">
+                                    <p>لاک ناخن اورجینال کاوال</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>کانسیلر دورچشم اس پی اف 25 پریم</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">موجودی</th>
+                                <td class="text-center">
+                                    <span class="badge badge-danger position-static">موجود</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge badge-danger position-static">موجود</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">وزن</th>
+                                <td class="text-center">۵۰۰ میلی گرم</td>
+                                <td class="text-center">۴۰۰ میلی گرم</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">رنگ</th>
+                                <td class="text-center">۳</td>
+                                <td class="text-center">۴</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

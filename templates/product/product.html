@@ -3,1849 +3,637 @@
 {% load static %}
 {% block title %} فروشگاه{% endblock %}
 {% block main %}
-<nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-            <div class="section-title text-center">
-               <h2 class="title pb-4 text-dark text-capitalize">
-                  فروشگاه
-               </h2>
+    <nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 class="title pb-4 text-dark text-capitalize">
+                            فروشگاه
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            فروشگاه
+                        </li>
+                    </ol>
+                </div>
             </div>
-         </div>
-         <div class="col-12">
-            <ol
-               class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center"
-               >
-               <li class="breadcrumb-item"><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
-               <li class="breadcrumb-item active" aria-current="page">
-                  فروشگاه
-               </li>
-            </ol>
-         </div>
-      </div>
-   </div>
-</nav>
-<!-- breadcrumb-section end -->
-<!-- product tab start -->
-<div class="product-tab bg-white pt-80 pb-50">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-9 mb-30">
-            <div class="grid-nav-wraper bg-lighten2 mb-30">
-               <div class="row align-items-center">
-                  <div class="col-12 col-md-6 mb-3 mb-md-0">
-                     <nav class="shop-grid-nav">
-                        <ul
-                           class="nav nav-pills align-items-center"
-                           id="pills-tab"
-                           role="tablist"
-                           >
-                           <li class="nav-item">
-                              <a
-                                 class="nav-link"
-                                 id="pills-home-tab"
-                                 data-toggle="pill"
-                                 href="#pills-home"
-                                 role="tab"
-                                 aria-controls="pills-home"
-                                 aria-selected="true"
-                                 >
-                              <i class="fa fa-th"></i>
-                              </a>
-                           </li>
-                           <li class="nav-item mr-0">
-                              <a
-                                 class="nav-link active"
-                                 id="pills-profile-tab"
-                                 data-toggle="pill"
-                                 href="#pills-profile"
-                                 role="tab"
-                                 aria-controls="pills-profile"
-                                 aria-selected="false"
-                                 ><i class="fa fa-list"></i
-                                 ></a>
-                           </li>
-                           <li>
+        </div>
+    </nav>
+    <!-- breadcrumb-section end -->
+    <!-- product tab start -->
+    <div class="product-tab bg-white pt-80 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 mb-30">
+                    <div class="grid-nav-wraper bg-lighten2 mb-30">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0">
+                                <nav class="shop-grid-nav">
+                                    <ul class="nav nav-pills align-items-center" id="pills-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="pills-home-tab" data-toggle="pill"
+                                               href="#pills-home" role="tab" aria-controls="pills-home"
+                                               aria-selected="true">
+                                                <i class="fa fa-th"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item mr-0">
+                                            <a class="nav-link active" id="pills-profile-tab" data-toggle="pill"
+                                               href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                               aria-selected="false"><i class="fa fa-list"></i></a>
+                                        </li>
+                                        <li>
+                                            <span class="total-products text-capitalize">{{ count }} محصول </span>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-12 col-md-6 position-relative">
+                                <div class="shop-grid-button d-flex align-items-center">
+                                    <span class="sort-by">مرتب سازی :</span>
+                                    <select class="form-select custom-select" aria-label="Default select example">
+                                        <option selected>مرتب سازی بر اساس</option>
+                                        <option value="1">ستون اول</option>
+                                        <option value="2">ستون دوم</option>
+                                        <option value="3">ستون سوم</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product-tab-nav end -->
+                    <div class="tab-content" id="pills-tabContent">
+                        <!-- first tab-pane -->
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                             aria-labelledby="pills-home-tab">
+                            <div class="row grid-view theme1">
+                                {% for product in products %}
+                                    <div class="col-sm-6 col-lg-4 mb-30">
+                                        <div class="card product-card">
+                                            <div class="card-body">
+                                                <div class="product-thumbnail position-relative">
+                                                    <a href="single-product.html">
+                                                        <img class="first-img" src="{{ product.image.url }}"
+                                                             alt="thumbnail"/>
+                                                    </a>
+                                                    <!-- product links -->
+                                                    <ul class="actions d-flex justify-content-center">
+                                                        <li>
+                                                            <a class="action" href="wishlist.html">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به علاقه مندی"
+                                                                      class="icon-heart"> </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#compare">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به لیست مقایسه"
+                                                                      class="icon-shuffle"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#quick-view">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="مشاهده سریع" class="icon-magnifier"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- product links end-->
+                                                </div>
+                                                <div class="product-desc py-0 px-0">
+                                                    <h3 class="title">
+                                                        <a href="shop-grid-4-column.html">{{ product.name }}</a>
+                                                    </h3>
+                                                    <div class="star-rating">
+                                                        <span class="ion-ios-star"></span>
+                                                        <span class="ion-ios-star"></span>
+                                                        <span class="ion-ios-star"></span>
+                                                        <span class="ion-ios-star"></span>
+                                                        <span class="ion-ios-star de-selected"></span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <span class="product-price">{{ product.price | intcomma }}تومان</span>
+                                                        <button class="pro-btn" data-toggle="modal"
+                                                                data-target="#add-to-cart">
+                                                            <i class="icon-basket"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
 
-                              <span class="total-products text-capitalize">{{ count }} محصول  </span>
-
-                           </li>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                             aria-labelledby="pills-profile-tab">
+                            <div class="row grid-view-list theme1">
+                                <div class="col-12 mb-30">
+                                    <div class="card product-card">
+                                        <div class="card-body">
+                                            <div class="media flex-column flex-md-row">
+                                                <div class="product-thumbnail position-relative">
+                                                    <span class="badge badge-danger top-right">قابل فروش</span>
+                                                    <a href="single-product.html">
+                                                        <img class="first-img"
+                                                             src="{% static 'home/assets/img/product/1.png' %}"
+                                                             alt="thumbnail"/>
+                                                    </a>
+                                                    <!-- product links -->
+                                                    <ul class="actions d-flex justify-content-center">
+                                                        <li>
+                                                            <a class="action" href="wishlist.html">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به علاقه مندی"
+                                                                      class="icon-heart"> </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#compare">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به لیست مقایسه"
+                                                                      class="icon-shuffle"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#quick-view">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="مشاهده سریع" class="icon-magnifier"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- product links end-->
+                                                </div>
+                                                <div class="media-body pr-md-4">
+                                                    <div class="product-desc py-0 px-0">
+                                                        <h3 class="title">
+                                                            <a href="shop-grid-4-column.html">رژ گونه بورژوا-33</a>
+                                                        </h3>
+                                                        <div class="star-rating mb-10">
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star de-selected"></span>
+                                                        </div>
+                                                        <span class="product-price">۱۳۵.۰۰۰ تومان</span>
+                                                    </div>
+                                                    <ul class="product-list-des">
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه
+                                                            و مجله در ستون و سطرآنچنان که لازم است.
+                                                        </li>
+                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                    </ul>
+                                                    <div class="availability-list mb-20">
+                                                        <p>موجودی: <span>1200 عدد در انبار</span></p>
+                                                    </div>
+                                                    <button class="btn btn-dark btn--xl" data-toggle="modal"
+                                                            data-target="#add-to-cart">
+                                                        افزودن به سبد
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-list End -->
+                                </div>
+                                <div class="col-12 mb-30">
+                                    <div class="card product-card">
+                                        <div class="card-body">
+                                            <div class="media flex-column flex-md-row">
+                                                <div class="product-thumbnail position-relative">
+                                                    <span class="badge badge-success top-left">-10%</span>
+                                                    <span class="badge badge-danger top-right">جدید</span>
+                                                    <a href="single-product.html">
+                                                        <img class="first-img"
+                                                             src="{% static 'home/assets/img/product/6.png' %}"
+                                                             alt="thumbnail"/>
+                                                    </a>
+                                                    <!-- product links -->
+                                                    <ul class="actions d-flex justify-content-center">
+                                                        <li>
+                                                            <a class="action" href="wishlist.html">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به علاقه مندی"
+                                                                      class="icon-heart"> </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#compare">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به لیست مقایسه"
+                                                                      class="icon-shuffle"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#quick-view">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="مشاهده سریع" class="icon-magnifier"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- product links end-->
+                                                </div>
+                                                <div class="media-body pr-md-4">
+                                                    <div class="product-desc py-0 px-0">
+                                                        <h3 class="title">
+                                                            <a href="shop-grid-4-column.html">پودر فیکساتور کاپرا نیو
+                                                                شماره F001</a>
+                                                        </h3>
+                                                        <div class="star-rating mb-10">
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star de-selected"></span>
+                                                        </div>
+                                                        <span class="product-price"><del class="del">۶۷۰.۰۰۰ تومان</del> <span
+                                                                class="onsale">۲۳۰.۰۰۰ تومان</span></span>
+                                                    </div>
+                                                    <ul class="product-list-des">
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه
+                                                            و مجله در ستون و سطرآنچنان که لازم است.
+                                                        </li>
+                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                    </ul>
+                                                    <div class="availability-list mb-20">
+                                                        <p>موجودی: <span>1200 عدد در انبار</span></p>
+                                                    </div>
+                                                    <button class="btn btn-dark btn--xl" data-toggle="modal"
+                                                            data-target="#add-to-cart">
+                                                        افزودن به سبد
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-list End -->
+                                </div>
+                                <div class="col-12 mb-30">
+                                    <div class="card product-card">
+                                        <div class="card-body">
+                                            <div class="media flex-column flex-md-row">
+                                                <div class="product-thumbnail position-relative">
+                                                    <span class="badge badge-danger top-right">جدید</span>
+                                                    <a href="single-product.html">
+                                                        <img class="first-img"
+                                                             src="{% static 'home/assets/img/product/2.png' %}"
+                                                             alt="thumbnail"/>
+                                                    </a>
+                                                    <!-- product links -->
+                                                    <ul class="actions d-flex justify-content-center">
+                                                        <li>
+                                                            <a class="action" href="wishlist.html">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به علاقه مندی"
+                                                                      class="icon-heart"> </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#compare">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به لیست مقایسه"
+                                                                      class="icon-shuffle"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#quick-view">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="مشاهده سریع" class="icon-magnifier"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- product links end-->
+                                                </div>
+                                                <div class="media-body pr-md-4">
+                                                    <div class="product-desc py-0 px-0">
+                                                        <h3 class="title">
+                                                            <a href="shop-grid-4-column.html">کرم پودر رینی فلاور SPF30
+                                                                حجم 30 میل شماره F02</a>
+                                                        </h3>
+                                                        <div class="star-rating mb-10">
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star de-selected"></span>
+                                                        </div>
+                                                        <span class="product-price">۱۳۵.۰۰۰ تومان</span>
+                                                    </div>
+                                                    <ul class="product-list-des">
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه
+                                                            و مجله در ستون و سطرآنچنان که لازم است.
+                                                        </li>
+                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                    </ul>
+                                                    <div class="availability-list mb-20">
+                                                        <p>موجودی: <span>1200 عدد در انبار</span></p>
+                                                    </div>
+                                                    <button class="btn btn-dark btn--xl" data-toggle="modal"
+                                                            data-target="#add-to-cart">
+                                                        افزودن به سبد
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-list End -->
+                                </div>
+                                <div class="col-12 mb-30">
+                                    <div class="card product-card">
+                                        <div class="card-body">
+                                            <div class="media flex-column flex-md-row">
+                                                <div class="product-thumbnail position-relative">
+                                                    <span class="badge badge-danger top-right">ویژگی</span>
+                                                    <a href="single-product.html">
+                                                        <img class="first-img"
+                                                             src="{% static 'home/assets/img/product/7.png' %}"
+                                                             alt="thumbnail"/>
+                                                    </a>
+                                                    <!-- product links -->
+                                                    <ul class="actions d-flex justify-content-center">
+                                                        <li>
+                                                            <a class="action" href="wishlist.html">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به علاقه مندی"
+                                                                      class="icon-heart"> </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#compare">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="افزودن به لیست مقایسه"
+                                                                      class="icon-shuffle"></span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="action" href="#" data-toggle="modal"
+                                                               data-target="#quick-view">
+                                                                <span data-toggle="tooltip" data-placement="bottom"
+                                                                      title="مشاهده سریع" class="icon-magnifier"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- product links end-->
+                                                </div>
+                                                <div class="media-body pr-md-4">
+                                                    <div class="product-desc py-0 px-0">
+                                                        <h3 class="title">
+                                                            <a href="shop-grid-4-column.html">کرم پودر پیررنه مدل Skin
+                                                                Balance مناسب انواع پوست </a>
+                                                        </h3>
+                                                        <div class="star-rating mb-10">
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star"></span>
+                                                            <span class="ion-ios-star de-selected"></span>
+                                                        </div>
+                                                        <span class="product-price">۱۳۵.۰۰۰ تومان</span>
+                                                    </div>
+                                                    <ul class="product-list-des">
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه
+                                                            و مجله در ستون و سطرآنچنان که لازم است.
+                                                        </li>
+                                                        <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                        <li>
+                                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                            با استفاده از طراحان گرافیک است.
+                                                        </li>
+                                                    </ul>
+                                                    <div class="availability-list mb-20">
+                                                        <p>موجودی: <span>1200 عدد در انبار</span></p>
+                                                    </div>
+                                                    <button class="btn btn-dark btn--xl" data-toggle="modal"
+                                                            data-target="#add-to-cart">
+                                                        افزودن به سبد
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-30 order-lg-first">
+                    <aside class="left-sidebar theme1">
+                        <!-- search-filter start -->
+                        <div class="search-filter">
+                            <div class="sidbar-widget pt-0">
+                                <h4 class="title">لوازم آرایشی و بهداشتی</h4>
+                            </div>
+                        </div>
+                        <ul id="offcanvas-menu2" class="blog-ctry-menu">
+                            <li>
+                                <a href="javascript:void(0)">آرایشی و گریم</a>
+                                <ul class="category-sub-menu">
+                                    <li><a href="#">کرم پودر</a></li>
+                                    <li><a href="#">کانسیلر</a></li>
+                                    <li><a href="#">پنکیک</a></li>
+                                    <li><a href="#">رژگونه</a></li>
+                                    <li><a href="#">BB و CC و DD کرم</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">پوست</a>
+                                <ul class="category-sub-menu">
+                                    <li><a href="#">کرم مرطوب کننده</a></li>
+                                    <li><a href="#">ماسک صورت</a></li>
+                                    <li><a href="#">ضد آفتاب</a></li>
+                                    <li><a href="#">درمان پوست</a></li>
+                                    <li><a href="#">کرم دور چشم</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">مو</a>
+                                <ul class="category-sub-menu">
+                                    <li><a href="#">رنگ موی تیوپی</a></li>
+                                    <li><a href="#">کیت رنگ مو</a></li>
+                                    <li><a href="#">واریاسیون</a></li>
+                                    <li><a href="#">دکلره</a></li>
+                                    <li><a href="#">اکسیدان</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                     </nav>
-                  </div>
-                  <div class="col-12 col-md-6 position-relative">
-                     <div class="shop-grid-button d-flex align-items-center">
-                        <span class="sort-by">مرتب سازی :</span>
-                        <select
-                           class="form-select custom-select"
-                           aria-label="Default select example"
-                           >
-                           <option selected>مرتب سازی بر اساس</option>
-                           <option value="1">ستون اول</option>
-                           <option value="2">ستون دوم</option>
-                           <option value="3">ستون سوم</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
+                        <div class="search-filter">
+                            <form action="#">
+                                <div class="sidbar-widget mt-10">
+                                    <h4 class="title">فیلتر بر اساس</h4>
+                                    <h4 class="sub-title pt-10">دسته بندی</h4>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="20820"/>
+                                        <label for="20820"> کرم پودر <span>(13)</span></label>
+                                    </div>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="20821"/>
+                                        <label for="20821">پنکیک <span>(13)</span></label>
+                                    </div>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="20822"/>
+                                        <label for="20822">رژگونه<span>(13)</span></label>
+                                    </div>
+                                </div>
+                                <!-- sidbar-widget -->
+                                <div class="sidbar-widget mt-10">
+                                    <h4 class="sub-title">قیمت</h4>
+                                    <div class="price-filter mt-10">
+                                        <div class="price-slider-amount">
+                                            <input type="text" id="amount" name="price" readonly
+                                                   placeholder="Add Your Price"/>
+                                        </div>
+                                        <div id="slider-range"></div>
+                                    </div>
+                                </div>
+                                <div class="sidbar-widget mt-10">
+                                    <h4 class="sub-title">سایز</h4>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="test9"/>
+                                        <label for="test9">s <span>(2)</span></label>
+                                    </div>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="test10"/>
+                                        <label for="test10">m <span>(2)</span></label>
+                                    </div>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="test11"/>
+                                        <label for="test11">l <span>(2)</span></label>
+                                    </div>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="test12"/>
+                                        <label for="test12">xl <span>(2)</span></label>
+                                    </div>
+                                </div>
+                                <!-- sidbar-widget -->
+                                <div class="sidbar-widget mt-10">
+                                    <h4 class="sub-title">رنگ</h4>
+                                    <div class="widget-check-box color-grey">
+                                        <input type="checkbox" id="20826"/>
+                                        <label for="20826">قهوه ای <span>(4)</span></label>
+                                    </div>
+                                    <div class="widget-check-box color-white">
+                                        <input type="checkbox" id="20827"/>
+                                        <label for="20827">سفید <span>(3)</span></label>
+                                    </div>
+                                    <div class="widget-check-box color-black">
+                                        <input type="checkbox" id="20828"/>
+                                        <label for="20828">مشکی <span>(6)</span></label>
+                                    </div>
+                                    <div class="widget-check-box color-camel">
+                                        <input type="checkbox" id="20829"/>
+                                        <label for="20829">شیری <span>(2)</span></label>
+                                    </div>
+                                </div>
+                                <!-- sidbar-widget -->
+                                <div class="sidbar-widget mt-10">
+                                    <h4 class="sub-title">برند</h4>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="20824"/>
+                                        <label for="20824">بورژوا<span>(5)</span></label>
+                                    </div>
+                                    <div class="widget-check-box">
+                                        <input type="checkbox" id="20825"/>
+                                        <label for="20825">پیر رنه<span>(8)</span></label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- search-filter end -->
+                        <div class="product-widget mb-60 mt-30">
+                            <h3 class="title">تگ های محصولات</h3>
+                            <ul class="product-tag d-flex flex-wrap">
+                                <li><a href="#">ارسال رایگان</a></li>
+                                <li><a href="#">محصولات جدید</a></li>
+                                <li><a href="#">جدید</a></li>
+                                <li><a href="#">فروشی</a></li>
+                            </ul>
+                        </div>
+                        <!--second banner start-->
+                        <div class="banner hover-animation position-relative overflow-hidden">
+                            <a href="shop-grid-4-column.html" class="d-block">
+                                <img src="{% static 'home/assets/img/banner/2.jpg' %}" alt="img"/>
+                            </a>
+                        </div>
+                        <!--second banner end-->
+                    </aside>
+                </div>
             </div>
-            <!-- product-tab-nav end -->
-            <div class="tab-content" id="pills-tabContent">
-               <!-- first tab-pane -->
-               <div
-                  class="tab-pane fade show active"
-                  id="pills-home"
-                  role="tabpanel"
-                  aria-labelledby="pills-home-tab"
-                  >
-                  <div class="row grid-view theme1">
-                      {% for product in products %}
-                     <div class="col-sm-6 col-lg-4 mb-30">
-                        <div class="card product-card">
-
-                             <div class="card-body">
-                              <div class="product-thumbnail position-relative">
-                                 <a href="single-product.html">
-                                 <img
-                                    class="first-img"
-                                    src="{{ product.image.url }}"
-                                    alt="thumbnail"
-                                    />
-                                 </a>
-                                 <!-- product links -->
-                                 <ul class="actions d-flex justify-content-center">
-                                    <li>
-                                       <a class="action" href="wishlist.html">
-                                       <span
-                                          data-toggle="tooltip"
-                                          data-placement="bottom"
-                                          title="افزودن به علاقه مندی"
-                                          class="icon-heart"
-                                          >
-                                       </span>
-                                       </a>
-                                    </li>
-                                    <li>
-                                       <a
-                                          class="action"
-                                          href="#"
-                                          data-toggle="modal"
-                                          data-target="#compare"
-                                          >
-                                       <span
-                                          data-toggle="tooltip"
-                                          data-placement="bottom"
-                                          title="افزودن به لیست مقایسه"
-                                          class="icon-shuffle"
-                                          ></span>
-                                       </a>
-                                    </li>
-                                    <li>
-                                       <a
-                                          class="action"
-                                          href="#"
-                                          data-toggle="modal"
-                                          data-target="#quick-view"
-                                          >
-                                       <span
-                                          data-toggle="tooltip"
-                                          data-placement="bottom"
-                                          title="مشاهده سریع"
-                                          class="icon-magnifier"
-                                          ></span>
-                                       </a>
-                                    </li>
-                                 </ul>
-                                 <!-- product links end-->
-                              </div>
-                              <div class="product-desc py-0 px-0">
-                                 <h3 class="title">
-                                    <a href="shop-grid-4-column.html"
-                                       >{{ product.name }}</a
-                                       >
-                                 </h3>
-                                 <div class="star-rating">
-                                    <span class="ion-ios-star"></span>
-                                    <span class="ion-ios-star"></span>
-                                    <span class="ion-ios-star"></span>
-                                    <span class="ion-ios-star"></span>
-                                    <span class="ion-ios-star de-selected"></span>
-                                 </div>
-                                 <div
-                                    class="d-flex align-items-center justify-content-between"
-                                    >
-
-                                    <span class="product-price">{{ product.price |  intcomma }}تومان</span>
-                                    <button
-                                       class="pro-btn"
-                                       data-toggle="modal"
-                                       data-target="#add-to-cart"
-                                       >
-                                    <i class="icon-basket"></i>
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-
-
-
-                        </div>
-
-                     </div>
-                      {% endfor %}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-success top-left">-10%</span>#}
-{#                                 <span class="badge badge-danger top-right">درحال خرید</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/6.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >ریمل حجم دهنده کالیستا بیوتی مدل BB Express...</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">#}
-{#                                    <del class="del">۸۷۰.۰۰۰ تومان</del>#}
-{#                                    <span class="onsale">۱۲۴.۰۰۰ تومان</span>#}
-{#                                    </span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">با ویژگی</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/2.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >New Balance Fresh Cream Kaymin from new zeland</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">جدید</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/7.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >خط چشم ماژیکی مای مدل Dip Liner</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">با ویژگی</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/3.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >پرایمر مای مدل Matt touch حجم 35 میلی لیت</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <h6 class="product-price">۱۲۴.۰۰۰ تومان</h6>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">sale</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/8.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >ریمل حجم دهنده ریمل لندن مدل Flash Scandale Eyes</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">جدید</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/4.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 <img#}
-{#                                    class="second-img"#}
-{#                                    src="{% static 'home/assets/img/product/12.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >پرایمر مای مدل Matt touch حجم 35 میلی لیت</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">#}
-{#                                    <del class="del">۸۷۰.۰۰۰ تومان</del>#}
-{#                                    <span class="onsale">۱۲۴.۰۰۰ تومان</span>#}
-{#                                    </span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">با ویژگی</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/9.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >ریمل حجم دهنده ریمل لندن مدل Flash Scandale Eyes</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right"#}
-{#                                    >new arrivals</span#}
-{#                                    >#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/5.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 <img#}
-{#                                    class="second-img"#}
-{#                                    src="{% static 'home/assets/img/product/12.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >کرم پودر ضد آفتاب هارمونیک کنویس - k101</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">جدید</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/12.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 <img#}
-{#                                    class="second-img"#}
-{#                                    src="{% static 'home/assets/img/product/5.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >ریمل حجم دهنده ریمل لندن مدل Flash Scandale Eyes</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">درحال خرید</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/10.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 <img#}
-{#                                    class="second-img"#}
-{#                                    src="{% static 'home/assets/img/product/8.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >کرم پودر ضد آفتاب هارمونیک کنویس - k101</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">#}
-{#                                    <del class="del">۸۷۰.۰۰۰ تومان</del>#}
-{#                                    <span class="onsale">۱۲۴.۰۰۰ تومان</span>#}
-{#                                    </span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-{#                     <div class="col-sm-6 col-lg-4 mb-30">#}
-{#                        <div class="card product-card">#}
-{#                           <div class="card-body">#}
-{#                              <div class="product-thumbnail position-relative">#}
-{#                                 <span class="badge badge-danger top-right">با ویژگی</span>#}
-{#                                 <a href="single-product.html">#}
-{#                                 <img#}
-{#                                    class="first-img"#}
-{#                                    src="{% static 'home/assets/img/product/11.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 <img#}
-{#                                    class="second-img"#}
-{#                                    src="{% static 'home/assets/img/product/5.png' %}"#}
-{#                                    alt="thumbnail"#}
-{#                                    />#}
-{#                                 </a>#}
-{#                                 <!-- product links -->#}
-{#                                 <ul class="actions d-flex justify-content-center">#}
-{#                                    <li>#}
-{#                                       <a class="action" href="wishlist.html">#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به علاقه مندی"#}
-{#                                          class="icon-heart"#}
-{#                                          >#}
-{#                                       </span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#compare"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="افزودن به لیست مقایسه"#}
-{#                                          class="icon-shuffle"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                       <a#}
-{#                                          class="action"#}
-{#                                          href="#"#}
-{#                                          data-toggle="modal"#}
-{#                                          data-target="#quick-view"#}
-{#                                          >#}
-{#                                       <span#}
-{#                                          data-toggle="tooltip"#}
-{#                                          data-placement="bottom"#}
-{#                                          title="مشاهده سریع"#}
-{#                                          class="icon-magnifier"#}
-{#                                          ></span>#}
-{#                                       </a>#}
-{#                                    </li>#}
-{#                                 </ul>#}
-{#                                 <!-- product links end-->#}
-{#                              </div>#}
-{#                              <div class="product-desc py-0 px-0">#}
-{#                                 <h3 class="title">#}
-{#                                    <a href="shop-grid-4-column.html"#}
-{#                                       >ریمل حجم دهنده ریمل لندن مدل Flash Scandale Eyes</a#}
-{#                                       >#}
-{#                                 </h3>#}
-{#                                 <div class="star-rating">#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star"></span>#}
-{#                                    <span class="ion-ios-star de-selected"></span>#}
-{#                                 </div>#}
-{#                                 <div#}
-{#                                    class="d-flex align-items-center justify-content-between"#}
-{#                                    >#}
-{#                                    <span class="product-price">۳۱۰.۰۰۰ تومان</span>#}
-{#                                    <button#}
-{#                                       class="pro-btn"#}
-{#                                       data-toggle="modal"#}
-{#                                       data-target="#add-to-cart"#}
-{#                                       >#}
-{#                                    <i class="icon-basket"></i>#}
-{#                                    </button>#}
-{#                                 </div>#}
-{#                              </div>#}
-{#                           </div>#}
-{#                        </div>#}
-{#                        <!-- product-list End -->#}
-{#                     </div>#}
-                  </div>
-               </div>
-               <!-- second tab-pane -->
-               <div
-                  class="tab-pane fade"
-                  id="pills-profile"
-                  role="tabpanel"
-                  aria-labelledby="pills-profile-tab"
-                  >
-                  <div class="row grid-view-list theme1">
-                     <div class="col-12 mb-30">
-                        <div class="card product-card">
-                           <div class="card-body">
-                              <div class="media flex-column flex-md-row">
-                                 <div class="product-thumbnail position-relative">
-                                    <span class="badge badge-danger top-right">قابل فروش</span>
-                                    <a href="single-product.html">
-                                    <img
-                                       class="first-img"
-                                       src="{% static 'home/assets/img/product/1.png' %}"
-                                       alt="thumbnail"
-                                       />
-                                    </a>
-                                    <!-- product links -->
-                                    <ul class="actions d-flex justify-content-center">
-                                       <li>
-                                          <a class="action" href="wishlist.html">
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به علاقه مندی"
-                                             class="icon-heart"
-                                             >
-                                          </span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#compare"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به لیست مقایسه"
-                                             class="icon-shuffle"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#quick-view"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="مشاهده سریع"
-                                             class="icon-magnifier"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                    </ul>
-                                    <!-- product links end-->
-                                 </div>
-                                 <div class="media-body pr-md-4">
-                                    <div class="product-desc py-0 px-0">
-                                       <h3 class="title">
-                                          <a href="shop-grid-4-column.html"
-                                             >رژ گونه بورژوا-33</a
-                                             >
-                                       </h3>
-                                       <div class="star-rating mb-10">
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star de-selected"></span>
-                                       </div>
-                                       <span class="product-price">۱۳۵.۰۰۰ تومان</span>
-                                    </div>
-                                    <ul class="product-list-des">
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                                          ستون
-                                          و
-                                          سطرآنچنان که لازم است.
-                                       </li>
-                                       <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                    </ul>
-                                    <div class="availability-list mb-20">
-                                       <p>موجودی: <span>1200 عدد در انبار</span></p>
-                                    </div>
-                                    <button
-                                       class="btn btn-dark btn--xl"
-                                       data-toggle="modal"
-                                       data-target="#add-to-cart"
-                                       >
-                                    افزودن به سبد
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- product-list End -->
-                     </div>
-                     <div class="col-12 mb-30">
-                        <div class="card product-card">
-                           <div class="card-body">
-                              <div class="media flex-column flex-md-row">
-                                 <div class="product-thumbnail position-relative">
-                                    <span class="badge badge-success top-left">-10%</span>
-                                    <span class="badge badge-danger top-right">جدید</span>
-                                    <a href="single-product.html">
-                                    <img
-                                       class="first-img"
-                                       src="{% static 'home/assets/img/product/6.png' %}"
-                                       alt="thumbnail"
-                                       />
-                                    </a>
-                                    <!-- product links -->
-                                    <ul class="actions d-flex justify-content-center">
-                                       <li>
-                                          <a class="action" href="wishlist.html">
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به علاقه مندی"
-                                             class="icon-heart"
-                                             >
-                                          </span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#compare"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به لیست مقایسه"
-                                             class="icon-shuffle"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#quick-view"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="مشاهده سریع"
-                                             class="icon-magnifier"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                    </ul>
-                                    <!-- product links end-->
-                                 </div>
-                                 <div class="media-body pr-md-4">
-                                    <div class="product-desc py-0 px-0">
-                                       <h3 class="title">
-                                          <a href="shop-grid-4-column.html"
-                                             >پودر فیکساتور کاپرا نیو شماره F001</a
-                                             >
-                                       </h3>
-                                       <div class="star-rating mb-10">
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star de-selected"></span>
-                                       </div>
-                                       <span class="product-price"
-                                          ><del class="del">۶۷۰.۰۰۰ تومان</del>
-                                       <span class="onsale">۲۳۰.۰۰۰ تومان</span></span
-                                          >
-                                    </div>
-                                    <ul class="product-list-des">
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                                          ستون
-                                          و
-                                          سطرآنچنان که لازم است.
-                                       </li>
-                                       <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                    </ul>
-                                    <div class="availability-list mb-20">
-                                       <p>موجودی: <span>1200 عدد در انبار</span></p>
-                                    </div>
-                                    <button
-                                       class="btn btn-dark btn--xl"
-                                       data-toggle="modal"
-                                       data-target="#add-to-cart"
-                                       >
-                                    افزودن به سبد
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- product-list End -->
-                     </div>
-                     <div class="col-12 mb-30">
-                        <div class="card product-card">
-                           <div class="card-body">
-                              <div class="media flex-column flex-md-row">
-                                 <div class="product-thumbnail position-relative">
-                                    <span class="badge badge-danger top-right">جدید</span>
-                                    <a href="single-product.html">
-                                    <img
-                                       class="first-img"
-                                       src="{% static 'home/assets/img/product/2.png' %}"
-                                       alt="thumbnail"
-                                       />
-                                    </a>
-                                    <!-- product links -->
-                                    <ul class="actions d-flex justify-content-center">
-                                       <li>
-                                          <a class="action" href="wishlist.html">
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به علاقه مندی"
-                                             class="icon-heart"
-                                             >
-                                          </span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#compare"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به لیست مقایسه"
-                                             class="icon-shuffle"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#quick-view"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="مشاهده سریع"
-                                             class="icon-magnifier"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                    </ul>
-                                    <!-- product links end-->
-                                 </div>
-                                 <div class="media-body pr-md-4">
-                                    <div class="product-desc py-0 px-0">
-                                       <h3 class="title">
-                                          <a href="shop-grid-4-column.html"
-                                             >کرم پودر رینی فلاور SPF30 حجم 30 میل شماره F02</a
-                                             >
-                                       </h3>
-                                       <div class="star-rating mb-10">
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star de-selected"></span>
-                                       </div>
-                                       <span class="product-price">۱۳۵.۰۰۰ تومان</span>
-                                    </div>
-                                    <ul class="product-list-des">
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                                          ستون
-                                          و
-                                          سطرآنچنان که لازم است.
-                                       </li>
-                                       <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                    </ul>
-                                    <div class="availability-list mb-20">
-                                       <p>موجودی: <span>1200 عدد در انبار</span></p>
-                                    </div>
-                                    <button
-                                       class="btn btn-dark btn--xl"
-                                       data-toggle="modal"
-                                       data-target="#add-to-cart"
-                                       >
-                                    افزودن به سبد
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- product-list End -->
-                     </div>
-                     <div class="col-12 mb-30">
-                        <div class="card product-card">
-                           <div class="card-body">
-                              <div class="media flex-column flex-md-row">
-                                 <div class="product-thumbnail position-relative">
-                                    <span class="badge badge-danger top-right">ویژگی</span>
-                                    <a href="single-product.html">
-                                    <img
-                                       class="first-img"
-                                       src="{% static 'home/assets/img/product/7.png' %}"
-                                       alt="thumbnail"
-                                       />
-                                    </a>
-                                    <!-- product links -->
-                                    <ul class="actions d-flex justify-content-center">
-                                       <li>
-                                          <a class="action" href="wishlist.html">
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به علاقه مندی"
-                                             class="icon-heart"
-                                             >
-                                          </span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#compare"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="افزودن به لیست مقایسه"
-                                             class="icon-shuffle"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                       <li>
-                                          <a
-                                             class="action"
-                                             href="#"
-                                             data-toggle="modal"
-                                             data-target="#quick-view"
-                                             >
-                                          <span
-                                             data-toggle="tooltip"
-                                             data-placement="bottom"
-                                             title="مشاهده سریع"
-                                             class="icon-magnifier"
-                                             ></span>
-                                          </a>
-                                       </li>
-                                    </ul>
-                                    <!-- product links end-->
-                                 </div>
-                                 <div class="media-body pr-md-4">
-                                    <div class="product-desc py-0 px-0">
-                                       <h3 class="title">
-                                          <a href="shop-grid-4-column.html"
-                                             >کرم پودر پیررنه مدل Skin Balance مناسب انواع پوست </a
-                                             >
-                                       </h3>
-                                       <div class="star-rating mb-10">
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star"></span>
-                                          <span class="ion-ios-star de-selected"></span>
-                                       </div>
-                                       <span class="product-price">۱۳۵.۰۰۰ تومان</span>
-                                    </div>
-                                    <ul class="product-list-des">
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در
-                                          ستون
-                                          و
-                                          سطرآنچنان که لازم است.
-                                       </li>
-                                       <li>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                       <li>
-                                          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
-                                          با
-                                          استفاده
-                                          از طراحان گرافیک است.
-                                       </li>
-                                    </ul>
-                                    <div class="availability-list mb-20">
-                                       <p>موجودی: <span>1200 عدد در انبار</span></p>
-                                    </div>
-                                    <button
-                                       class="btn btn-dark btn--xl"
-                                       data-toggle="modal"
-                                       data-target="#add-to-cart"
-                                       >
-                                    افزودن به سبد
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+            <div class="row">
+                <div class="col-12 col-lg-9 offset-lg-3">
+                    <nav class="pagination-section mt-30 mb-30">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="ion-chevron-right"></i></a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="ion-chevron-left"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-         </div>
-         <div class="col-lg-3 mb-30 order-lg-first">
-            <aside class="left-sidebar theme1">
-               <!-- search-filter start -->
-               <div class="search-filter">
-                  <div class="sidbar-widget pt-0">
-                     <h4 class="title">لوازم آرایشی و بهداشتی</h4>
-                  </div>
-               </div>
-               <ul id="offcanvas-menu2" class="blog-ctry-menu">
-                  <li>
-                     <a href="javascript:void(0)">آرایشی و گریم</a>
-                     <ul class="category-sub-menu">
-                        <li><a href="#">کرم پودر</a></li>
-                        <li><a href="#">کانسیلر</a></li>
-                        <li><a href="#">پنکیک</a></li>
-                        <li><a href="#">رژگونه</a></li>
-                        <li><a href="#">BB و CC و DD کرم</a></li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="javascript:void(0)">پوست</a>
-                     <ul class="category-sub-menu">
-                        <li><a href="#">کرم مرطوب کننده</a></li>
-                        <li><a href="#">ماسک صورت</a></li>
-                        <li><a href="#">ضد آفتاب</a></li>
-                        <li><a href="#">درمان پوست</a></li>
-                        <li><a href="#">کرم دور چشم</a></li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="javascript:void(0)">مو</a>
-                     <ul class="category-sub-menu">
-                        <li><a href="#">رنگ موی تیوپی</a></li>
-                        <li><a href="#">کیت رنگ مو</a></li>
-                        <li><a href="#">واریاسیون</a></li>
-                        <li><a href="#">دکلره</a></li>
-                        <li><a href="#">اکسیدان</a></li>
-                     </ul>
-                  </li>
-               </ul>
-               <div class="search-filter">
-                  <form action="#">
-                     <div class="sidbar-widget mt-10">
-                        <h4 class="title">فیلتر بر اساس</h4>
-                        <h4 class="sub-title pt-10">دسته بندی</h4>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="20820"/>
-                           <label for="20820">
-                           کرم پودر <span>(13)</span></label>
-                        </div>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="20821"/>
-                           <label for="20821">پنکیک <span>(13)</span></label>
-                        </div>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="20822"/>
-                           <label for="20822">رژگونه<span>(13)</span></label>
-                        </div>
-                     </div>
-                     <!-- sidbar-widget -->
-                     <div class="sidbar-widget mt-10">
-                        <h4 class="sub-title">قیمت</h4>
-                        <div class="price-filter mt-10">
-                           <div class="price-slider-amount">
-                              <input
-                                 type="text"
-                                 id="amount"
-                                 name="price"
-                                 readonly
-                                 placeholder="Add Your Price"
-                                 />
-                           </div>
-                           <div id="slider-range"></div>
-                        </div>
-                     </div>
-                     <div class="sidbar-widget mt-10">
-                        <h4 class="sub-title">سایز</h4>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="test9"/>
-                           <label for="test9">s <span>(2)</span></label>
-                        </div>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="test10"/>
-                           <label for="test10">m <span>(2)</span></label>
-                        </div>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="test11"/>
-                           <label for="test11">l <span>(2)</span></label>
-                        </div>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="test12"/>
-                           <label for="test12">xl <span>(2)</span></label>
-                        </div>
-                     </div>
-                     <!-- sidbar-widget -->
-                     <div class="sidbar-widget mt-10">
-                        <h4 class="sub-title">رنگ</h4>
-                        <div class="widget-check-box color-grey">
-                           <input type="checkbox" id="20826"/>
-                           <label for="20826">قهوه ای <span>(4)</span></label>
-                        </div>
-                        <div class="widget-check-box color-white">
-                           <input type="checkbox" id="20827"/>
-                           <label for="20827">سفید <span>(3)</span></label>
-                        </div>
-                        <div class="widget-check-box color-black">
-                           <input type="checkbox" id="20828"/>
-                           <label for="20828">مشکی <span>(6)</span></label>
-                        </div>
-                        <div class="widget-check-box color-camel">
-                           <input type="checkbox" id="20829"/>
-                           <label for="20829">شیری <span>(2)</span></label>
-                        </div>
-                     </div>
-                     <!-- sidbar-widget -->
-                     <div class="sidbar-widget mt-10">
-                        <h4 class="sub-title">برند</h4>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="20824"/>
-                           <label for="20824">بورژوا<span>(5)</span></label>
-                        </div>
-                        <div class="widget-check-box">
-                           <input type="checkbox" id="20825"/>
-                           <label for="20825">پیر رنه<span>(8)</span></label>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-               <!-- search-filter end -->
-               <div class="product-widget mb-60 mt-30">
-                  <h3 class="title">تگ های محصولات</h3>
-                  <ul class="product-tag d-flex flex-wrap">
-                     <li><a href="#">ارسال رایگان</a></li>
-                     <li><a href="#">محصولات جدید</a></li>
-                     <li><a href="#">جدید</a></li>
-                     <li><a href="#">فروشی</a></li>
-                  </ul>
-               </div>
-               <!--second banner start-->
-               <div class="banner hover-animation position-relative overflow-hidden">
-                  <a href="shop-grid-4-column.html" class="d-block">
-                  <img src="{% static 'home/assets/img/banner/2.jpg' %}" alt="img"/>
-                  </a>
-               </div>
-               <!--second banner end-->
-            </aside>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-12 col-lg-9 offset-lg-3">
-            <nav class="pagination-section mt-30 mb-30">
-               <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                     <a class="page-link" href="#"><i class="ion-chevron-right"></i></a>
-                  </li>
-                  <li class="page-item active">
-                     <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item">
-                     <a class="page-link" href="#"
-                        ><i class="ion-chevron-left"></i
-                        ></a>
-                  </li>
-               </ul>
-            </nav>
-         </div>
-      </div>
-   </div>
-</div>
+        </div>
+    </div>
+
 {% endblock %}

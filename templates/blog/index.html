@@ -1,0 +1,324 @@
+{% extends 'home/base.html' %}
+{% load humanizelib %}
+{% load static %}
+{% block title %} بلاگ {% endblock %}
+{% block main %}
+    <nav class="breadcrumb-section theme1 bg-lighten2 pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 class="title pb-4 text-dark text-capitalize">
+                            بلاگ
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            بلاگ
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="blog-section blog-list py-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-12 mb-30">
+                            <div class="single-blog media flex-column flex-md-row">
+                                <a class="blog-thumb mb-20 mb-md-0 ml-md-4 mr-xl-5 zoom-in d-block overflow-hidden"
+                                   href="shop-grid-3-column.html">
+                                    <img src="{% static 'home/assets/img/blog-post/1.png' %}" alt="blog-thumb-naile"/>
+                                </a>
+                                <div class="blog-post-content media-body mb-5 mb-md-0">
+                                    <h3 class="title mb-15">
+                                        <a href="single-blog.html">این متن اول بلاگ است</a>
+                                    </h3>
+                                    <p class="sub-title">
+                                        ایجاد شده توسط
+                                        <a class="blog-link" href="#">مدیر</a>
+                                        ۷ بهمن ۱۳۹۹
+                                    </p>
+                                    <p class="text">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای
+                                        شرایط فعلی تکنولوژی مورد نیاز
+                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و
+                                        سه
+                                        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                                        شناخت بیشتری را برای طراحان
+                                        رایانه ای علی الخصوص طراحان خلاقی
+                                    </p>
+                                    <a class="read-more" href="single-blog.html">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-30">
+                            <div class="single-blog media flex-column flex-md-row">
+                                <a class="blog-thumb mb-20 mb-md-0 ml-md-4 mr-xl-5 zoom-in d-block overflow-hidden"
+                                   href="shop-grid-3-column.html">
+                                    <img src="{% static 'home/assets/img/blog-post/2.png' %}" alt="blog-thumb-naile"/>
+                                </a>
+                                <div class="blog-post-content media-body mb-5 mb-md-0">
+                                    <h3 class="title mb-15">
+                                        <a href="single-blog.html">این پست دوم بلاگ است</a>
+                                    </h3>
+                                    <h5 class="sub-title">
+                                        ایجاد شده توسط
+                                        <a class="blog-link" href="#">مدیر</a>
+                                        ۷ بهمن ۱۳۹۹
+                                    </h5>
+                                    <p class="text">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای
+                                        شرایط فعلی تکنولوژی مورد نیاز
+                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و
+                                        سه
+                                        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                                        شناخت بیشتری را برای طراحان
+                                        رایانه ای علی الخصوص طراحان خلاقی
+                                    </p>
+                                    <a class="read-more" href="single-blog.html">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-30">
+                            <div class="single-blog media flex-column flex-md-row">
+                                <a class="blog-thumb mb-20 mb-md-0 ml-md-4 mr-xl-5 zoom-in d-block overflow-hidden"
+                                   href="shop-grid-3-column.html">
+                                    <img src="{% static 'home/assets/img/blog-post/3.png' %}" alt="blog-thumb-naile"/>
+                                </a>
+                                <div class="blog-post-content media-body mb-5 mb-md-0">
+                                    <h3 class="title mb-15">
+                                        <a href="single-blog.html">این سومین پست برای بلاگ است</a>
+                                    </h3>
+                                    <p class="sub-title">
+                                        ایجاد شده توسط
+                                        <a class="blog-link" href="#">مدیر</a>
+                                        ۷ بهمن ۱۳۹۹
+                                    </p>
+                                    <p class="text">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای
+                                        شرایط فعلی تکنولوژی مورد نیاز
+                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و
+                                        سه
+                                        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                                        شناخت بیشتری را برای طراحان
+                                        رایانه ای علی الخصوص طراحان خلاقی
+                                    </p>
+                                    <a class="read-more" href="single-blog.html">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-30">
+                            <div class="single-blog media flex-column flex-md-row">
+                                <a class="blog-thumb mb-20 mb-md-0 ml-md-4 mr-xl-5 zoom-in d-block overflow-hidden"
+                                   href="shop-grid-3-column.html">
+                                    <img src="{% static 'home/assets/img/blog-post/2.png' %}" alt="blog-thumb-naile"/>
+                                </a>
+                                <div class="blog-post-content media-body mb-5 mb-md-0">
+                                    <h3 class="title mb-15">
+                                        <a href="single-blog.html">این متن اول بلاگ است</a>
+                                    </h3>
+                                    <p class="sub-title">
+                                        ایجاد شده توسط
+                                        <a class="blog-link" href="#">مدیر</a>
+                                        ۷ بهمن ۱۳۹۹
+                                    </p>
+                                    <p class="text">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای
+                                        شرایط فعلی تکنولوژی مورد نیاز
+                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و
+                                        سه
+                                        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                                        شناخت بیشتری را برای طراحان
+                                        رایانه ای علی الخصوص طراحان خلاقی
+                                    </p>
+                                    <a class="read-more" href="single-blog.html">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-30">
+                            <div class="single-blog media flex-column flex-md-row">
+                                <a class="blog-thumb mb-20 mb-md-0 ml-md-4 mr-xl-5 zoom-in d-block overflow-hidden"
+                                   href="shop-grid-3-column.html">
+                                    <img src="{% static 'home/assets/img/blog-post/3.png' %}" alt="blog-thumb-naile"/>
+                                </a>
+                                <div class="blog-post-content media-body mb-5 mb-md-0">
+                                    <h3 class="title mb-15">
+                                        <a href="single-blog.html">این پست دوم بلاگ است</a>
+                                    </h3>
+                                    <p class="sub-title">
+                                        ایجاد شده توسط
+                                        <a class="blog-link" href="#">مدیر</a>
+                                        ۷ بهمن ۱۳۹۹
+                                    </p>
+                                    <p class="text">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای
+                                        شرایط فعلی تکنولوژی مورد نیاز
+                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و
+                                        سه
+                                        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                                        شناخت بیشتری را برای طراحان
+                                        رایانه ای علی الخصوص طراحان خلاقی
+                                    </p>
+                                    <a class="read-more" href="single-blog.html">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-30">
+                            <div class="single-blog media flex-column flex-md-row">
+                                <a class="blog-thumb mb-20 mb-md-0 ml-md-4 mr-xl-5 zoom-in d-block overflow-hidden"
+                                   href="shop-grid-3-column.html">
+                                    <img src="{% static 'home/assets/img/blog-post/1.png' %}" alt="blog-thumb-naile"/>
+                                </a>
+                                <div class="blog-post-content media-body mb-5 mb-md-0">
+                                    <h3 class="title mb-15">
+                                        <a href="single-blog.html">این سومین پست برای بلاگ است</a>
+                                    </h3>
+                                    <p class="sub-title">
+                                        ایجاد شده توسط
+                                        <a class="blog-link" href="#">مدیر</a>
+                                        ۷ بهمن ۱۳۹۹
+                                    </p>
+                                    <p class="text">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                        برای
+                                        شرایط فعلی تکنولوژی مورد نیاز
+                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و
+                                        سه
+                                        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها
+                                        شناخت بیشتری را برای طراحان
+                                        رایانه ای علی الخصوص طراحان خلاقی
+                                    </p>
+                                    <a class="read-more" href="single-blog.html">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-first mb-30">
+                    <aside class="blog-left-sidebar">
+                        <div class="sidebar-widget theme1 mb-30">
+                            <h3 class="post-title">جستجو</h3>
+                            <div class="blog-search-form">
+                                <form action="#" class="position-relative">
+                                    <input class="form-control border-blue rounded" type="text"
+                                           placeholder="عبارت خود را وارد نمایید..."/>
+                                    <button class="btn blog-search-btn" type="submit">
+                                        <i class="ion-ios-search-strong"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget mb-30">
+                            <h3 class="post-title">دسته بندی ها</h3>
+                            <ul class="blog-links">
+                                <li><a href="#">آرایش صورت (20)</a></li>
+                                <li><a href="#">آرایش چشم (9)</a></li>
+                                <li><a href="#">آرایش ابرو (5)</a></li>
+                                <li><a href="#">آرایش لب (11)</a></li>
+                                <li><a href="#">برنزه کردن و اتوبرنز (3)</a></li>
+                                <li><a href="#">ست مراقبت پوست و بدن (6)</a></li>
+                                <li><a href="#">مراقبت بدن (4)</a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-widget mb-30">
+                            <h3 class="post-title">پست های اخیر</h3>
+                            <div class="blog-media-list mb-30 media">
+                                <div class="post-thumb ml-4">
+                                    <a href="#"><img src="{% static 'home/assets/img/blog-post/1.png' %}"
+                                                     alt="img"/></a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="sub-title mb-1">
+                                        <a href="single-blog.html">این پست اول است</a>
+                                    </h5>
+                                    <span class="date"> ایجاد شده توسط مدیر</span>
+                                </div>
+                            </div>
+                            <div class="blog-media-list mb-30 media">
+                                <div class="post-thumb ml-4">
+                                    <a href="#"><img src="{% static 'home/assets/img/blog-post/2.png' %}"
+                                                     alt="img"/></a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="sub-title mb-1">
+                                        <a href="single-blog.html">این پست دوم است</a>
+                                    </h5>
+                                    <span class="date"> ایجاد شده توسط مدیر</span>
+                                </div>
+                            </div>
+                            <div class="blog-media-list mb-30 media">
+                                <div class="post-thumb ml-4">
+                                    <a href="#"><img src="{% static 'home/assets/img/blog-post/3.png' %}"
+                                                     alt="img"/></a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="sub-title mb-1">
+                                        <a href="single-blog.html">این پست سوم است</a>
+                                    </h5>
+                                    <span class="date"> ایجاد شده توسط مدیر</span>
+                                </div>
+                            </div>
+                            <div class="blog-media-list media">
+                                <div class="post-thumb ml-4">
+                                    <a href="#"><img src="{% static 'home/assets/img/blog-post/1.png' %}"
+                                                     alt="img"/></a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="sub-title mb-1">
+                                        <a href="single-blog.html">این پست چهارم است</a>
+                                    </h5>
+                                    <span class="date"> ایجاد شده توسط مدیر</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-widget">
+                            <h3 class="post-title">تگ ها</h3>
+                            <ul class="product-tag d-flex flex-wrap">
+                                <li><a href="#">کرم پودر</a></li>
+                                <li><a href="#">رژ گونه</a></li>
+                                <li><a href="#">مد</a></li>
+                                <li><a href="#">آرایش</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 offset-lg-3 col-lg-9">
+                    <nav class="pagination-section mt-30">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="ion-chevron-right"></i></a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="ion-chevron-left"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
