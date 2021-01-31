@@ -110,7 +110,7 @@
                                                 </div>
                                                 <div class="product-desc py-0 px-0">
                                                     <h3 class="title">
-                                                        <a href="shop-grid-4-column.html">{{ product.name }}</a>
+                                                        <a href="{% url 'product:product_details' product.id %}">{{ product.name }}</a>
                                                     </h3>
                                                     <div class="star-rating">
                                                         <span class="ion-ios-star"></span>
