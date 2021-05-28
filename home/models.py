@@ -10,3 +10,12 @@ class ContactModel(models.Model):
     class Meta:
         verbose_name = 'پیام'
         verbose_name_plural = 'پیام ها'
+
+
+class Slider(models.Model):
+    name = models.CharField(max_length=50, verbose_name='نام ')
+    image = models.ImageField(upload_to='slider/%Y/%m/%d/', verbose_name='تصویر')
+
+    class Meta:
+        verbose_name = 'اسلایدر'
+        verbose_name_plural = 'اسلایدر'
