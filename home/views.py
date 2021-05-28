@@ -6,8 +6,10 @@ from django.contrib import messages
 
 
 class Home(View):
-    def get(self, request):
-        return render(request, 'home/index.html')
+    @staticmethod
+    def get(request):
+        home_slider = Slider.objects.all()
+        return render(request, 'home/index.html', {'home_slider': home_slider})
 
 
 class AboutUs(View):

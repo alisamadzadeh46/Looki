@@ -1,20 +1,24 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block main %}
+
     <section class="bg-light">
-        <div class="main-slider dots-style theme1">
-            <div class="slider-item bg-img bg-img1">
+        <!-- slider-item end -->
+        {% for slider in home_slider %}
+            <div class="main-slider dots-style theme1">
+            <div class="slider-item bg-img" style="background-image: url({{ slider.image.url }})">
                 <div class="container">
                     <div class="row align-items-center slider-height">
                         <div class="col-12">
                             <div class="slider-content">
+
                                 <p class="text animated" data-animation-in="fadeInDown" data-delay-in=".300">
-                                    برس آرایش صورت
+                                    {{ slider.name }}
                                 </p>
                                 <h2 class="title animated">
-                                    <span class="animated d-block" data-animation-in="fadeInRight" data-delay-in=".800">مجموعه برس مراقبت از پوست</span>
+                                    <span class="animated d-block" data-animation-in="fadeInRight" data-delay-in=".800">{{ slider.description }}</span>
                                     <span class="animated font-weight-bold" data-animation-in="fadeInLeft"
-                                          data-delay-in="1.5">30٪ تخفیف</span>
+                                          data-delay-in="1.5">{{ slider.discount}}</span>
                                 </h2>
                                 <p class="text-right">
                                     <a href="shop-grid-4-column.html"
@@ -26,56 +30,8 @@
                     </div>
                 </div>
             </div>
-            <!-- slider-item end -->
-            <div class="slider-item bg-img bg-img2">
-                <div class="container">
-                    <div class="row align-items-center slider-height">
-                        <div class="col-12">
-                            <div class="slider-content">
-                                <p class="text animated" data-animation-in="fadeInRight" data-delay-in=".300">
-                                    شامپو مورنوا
-                                </p>
-
-                                <h2 class="title">
-                                    <span class="animated d-block" data-animation-in="fadeInLeft" data-delay-in=".800">شامپو مراقبت از پوست سر</span>
-                                    <span class="animated font-weight-bold" data-animation-in="fadeInUp"
-                                          data-delay-in="1.5">40٪ تخفیف</span>
-                                </h2>
-                                <p class="text-right">
-                                    <a href="shop-grid-4-column.html"
-                                       class="btn btn-outline-primary btn--lg animated mt-45 mt-sm-25"
-                                       data-animation-in="fadeInRight" data-delay-in="1.9">خرید</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- slider-item end -->
-            <div class="slider-item bg-img bg-img3">
-                <div class="container">
-                    <div class="row align-items-center slider-height">
-                        <div class="col-12">
-                            <div class="slider-content">
-                                <p class="text animated" data-animation-in="fadeInRight" data-delay-in=".300">
-                                    پالت لب باند قرمز
-                                </p>
-                                <h2 class="title">
-                                    <span class="animated d-block" data-animation-in="fadeInRight" data-delay-in=".800">رژ لب های محافظ لب</span>
-                                    <span class="animated font-weight-bold" data-animation-in="fadeInUp"
-                                          data-delay-in="1.5">فروش 60٪ تخفیف</span>
-                                </h2>
-                                <p class="text-right">
-                                    <a href="shop-grid-4-column.html"
-                                       class="btn btn-outline-primary btn--lg animated mt-45 mt-sm-25"
-                                       data-animation-in="fadeInRight" data-delay-in="1.9">خرید</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- slider-item end -->
+        {% endfor %}
+        <!-- slider-item end -->
         </div>
     </section>
     <section class="static-media-section py-80 bg-white">

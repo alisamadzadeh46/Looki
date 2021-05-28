@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 class ContactModel(models.Model):
@@ -15,7 +16,15 @@ class ContactModel(models.Model):
 class Slider(models.Model):
     name = models.CharField(max_length=50, verbose_name='نام ')
     image = models.ImageField(upload_to='slider/%Y/%m/%d/', verbose_name='تصویر')
+    description = models.CharField(max_length=100, verbose_name='توضیحات ')
+    discount = models.CharField(max_length=50, verbose_name='تخفیف')
 
     class Meta:
         verbose_name = 'اسلایدر'
         verbose_name_plural = 'اسلایدر'
+
+    def image_tag(self):
+        if self.image.url is not None:
+            return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+        else:
+            return ""

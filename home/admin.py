@@ -1,17 +1,16 @@
 from django.contrib import admin
-from django.contrib.admin import AdminSite
-from django.utils.translation import ugettext_lazy
 
 from .models import *
+
+admin.site.index_title = "پنل مدیریتی"
 
 
 @admin.register(ContactModel)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'subject')
+    list_display = ('name', 'subject',)
 
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
-    list_display = ['name']
-
-
+    list_display = ['name', 'image_tag']
+    readonly_fields = ('image_tag',)
