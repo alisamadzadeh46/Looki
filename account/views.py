@@ -8,7 +8,7 @@ from .models import Profile
 
 class Register(View):
     form_class = UserRegistrationForm
-    template_name = 'account/login.html'
+    template_name = 'account/register.html'
 
     def get(self, request):
         form = self.form_class
