@@ -4,7 +4,7 @@
 
     <section class="bg-light">
         <!-- slider-item end -->
-        {% for slider in home_slider %}
+        {% for slider in main_slider %}
             <div class="main-slider dots-style theme1">
             <div class="slider-item bg-img" style="background-image: url({{ slider.image.url }})">
                 <div class="container">
@@ -16,14 +16,15 @@
                                     {{ slider.name }}
                                 </p>
                                 <h2 class="title animated">
-                                    <span class="animated d-block" data-animation-in="fadeInRight" data-delay-in=".800">{{ slider.description }}</span>
+                                    <span class="animated d-block" data-animation-in="fadeInRight"
+                                          data-delay-in=".800">{{ slider.description }}</span>
                                     <span class="animated font-weight-bold" data-animation-in="fadeInLeft"
-                                          data-delay-in="1.5">{{ slider.discount}}</span>
+                                          data-delay-in="1.5">{{ slider.discount }}</span>
                                 </h2>
                                 <p class="text-right">
-                                    <a href="shop-grid-4-column.html"
-                                       class="btn btn-outline-primary btn--lg animated mt-45 mt-sm-25"
-                                       data-animation-in="fadeInRight" data-delay-in="1.9">خرید</a>
+                                    <a
+                                            class="btn btn-outline-primary btn--lg animated mt-45 mt-sm-25"
+                                            data-animation-in="fadeInRight" data-delay-in="1.9">خرید</a>
                                 </p>
                             </div>
                         </div>
@@ -85,27 +86,25 @@
     <div class="common-banner bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 mb-30">
-                    <div class="banner-thumb">
-                        <a href="shop-grid-4-column.html" class="zoom-in d-block overflow-hidden">
-                            <img src="{% static 'home/assets/img/banner/1.jpg' %}" alt="banner-thumb-naile"/>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-30">
-                    <div class="banner-thumb">
-                        <a href="shop-grid-4-column.html" class="zoom-in d-block overflow-hidden">
-                            <img src="{% static 'home/assets/img/banner/2.jpg' %}" alt="banner-thumb-naile"/>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-30">
-                    <div class="banner-thumb">
-                        <a href="shop-grid-4-column.html" class="zoom-in d-block overflow-hidden">
-                            <img src="{% static 'home/assets/img/banner/3.jpg' %}" alt="banner-thumb-naile"/>
-                        </a>
-                    </div>
-                </div>
+                {% for second in second_slider %}
+                    {% if second.name == "1" %}
+                        <div class="col-md-6 mb-30">
+                            <div class="banner-thumb">
+                                <a class="zoom-in d-block overflow-hidden">
+                                    <img src="{{ second.image.url }}" alt="banner-thumb-naile"/>
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-md-3 col-sm-6 mb-30">
+                            <div class="banner-thumb">
+                                <a class="zoom-in d-block overflow-hidden">
+                                    <img src="{{ second.image.url }}" alt="banner-thumb-naile"/>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

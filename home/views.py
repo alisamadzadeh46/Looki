@@ -8,8 +8,11 @@ from django.contrib import messages
 class Home(View):
     @staticmethod
     def get(request):
-        home_slider = Slider.objects.all()
-        return render(request, 'home/index.html', {'home_slider': home_slider})
+        main_slider = Slider.objects.filter(main_slider=True)
+        second_slider = Slider.objects.filter(second_slider=True)
+        third_slider = Slider.objects.filter(third_slider=True)
+        return render(request, 'home/index.html',
+                      {'main_slider': main_slider, 'second_slider': second_slider, 'third_slider': third_slider})
 
 
 class AboutUs(View):
